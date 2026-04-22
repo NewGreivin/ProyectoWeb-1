@@ -2,8 +2,8 @@ export default function Imagenes( {
     url, 
     alt = "No logro cargar la imagen",
     clase = "responsive", 
-    ancho = "200px", 
-    alto = "200px",
+    ancho = 200, 
+    alto = 200,
     classExtra = ""
 }
 ){
