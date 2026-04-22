@@ -2,7 +2,7 @@ export default function Titulo( {
     tipografia="h1", 
     texto, 
     alineado="left", 
-    color_text="black"
+    color_text="white"
 } 
 
 ){

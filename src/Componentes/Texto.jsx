@@ -1,7 +1,7 @@
 export default function Texto({ 
     texto, 
     alineado="center", 
-    color_text="black" }) {
+    color_text="white" }) {
 
     const alineacion = {
         "left": "text-start",
