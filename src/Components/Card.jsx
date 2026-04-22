@@ -5,7 +5,7 @@ export default function Card({
     alineado = "center",
     header,
     footer,
-    
+
     children
 }
 ) {
