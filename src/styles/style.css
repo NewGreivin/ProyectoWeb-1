@@ -1,0 +1,21 @@
+.bg-answer-correct {
+  background-color: #28a745;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+.bg-answer-incorrect {
+  background-color: #922530;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+.container-result {
+  padding: 0 1rem;
+  max-width: 700px;
+  width: 100%;
+}
