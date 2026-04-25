@@ -1,4 +1,3 @@
-
 export default function Card({
     color_background = "black",
     color_texto = "white",
@@ -6,7 +5,9 @@ export default function Card({
     header,
     footer,
 
-    children
+    chil_top,
+    chil_body,
+    chil_bottom
 }
 ) {
 
@@ -43,10 +44,12 @@ export default function Card({
 
             {header && <div className="card-header">{header}</div>}
 
-            <div className="card-body">
-                {children}
-            </div>
+            {chil_top}
 
+            <div className="card-body">
+            {chil_body}
+            </div>
+            {chil_bottom}
             {footer && <div className="card-footer">{footer}</div>}
 
         </div>
