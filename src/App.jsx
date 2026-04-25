@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import PAnswer_Result from './pages/PAnswerResult';';
+import PAnswer_Result from './pages/PAnswerResult';
 
 export default function App() {
   return (
