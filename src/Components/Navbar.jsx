@@ -15,7 +15,7 @@ export default function Navbar( {
     
     //Controla como se expande o se comprime en forma hamburguesa.
     const navbar_expand = {
-        "sm": "navbar-expand-lg",
+        "sm": "navbar-expand-sm",
         "md": "navbar-expand-md",
         "lg": "navbar-expand-lg",
         "xl": "navbar-expand-xl",
