@@ -1,13 +1,50 @@
-export default function Button({ texto, color, tamano, onClick }) {
-  tamano = "btn-" + tamano;
-
-  const buttonColor = ["primary", "secondary", "success", "danger"];
-  const buttonSize = ["lg", "sm"];
+export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, sombra, onClick }) {
   
+  const buttonColor = {
+    "azul": "btn-primary",
+    "gris": "btn-secondary",
+    "verde": "btn-success",
+    "rojo": "btn-danger",
+    "amarillo": "btn-warning",
+    "celeste": "btn-info",
+    "blanco": "btn-light",
+    "negro": "btn-dark"
+  }[color];
+
+  const buttonSize = {
+    "grande": "btn-lg",
+    "pequeño": "btn-sm"
+  }[tamano];
+
+  const buttonPosition = {
+    "izquierda": "text-start",
+    "centro": "text-center",
+    "derecha": "text-end"
+  }[posicion];
+
+  const borderColor = {
+    "azul": "border-primary",
+    "gris": "border-secondary",
+    "verde": "border-success",
+    "rojo": "border-danger",
+    "amarillo": "border-warning",
+    "celeste": "border-info",
+    "blanco": "border-light",
+    "negro": "border-dark"
+  }[colorBorde];
+
+  const shadowType = {
+    "pequeña": "shadow-sm",
+    "normal": "shadow",
+    "grande": "shadow-lg"
+  }[sombra];
+
+  const borderClass = mostrarBorde ? `border ${borderColor}` : "";
+
   return (
     <button
       type="button"
-      className={`btn btn-${color} ${tamano} m-2`}
+      className={`btn ${buttonColor} ${buttonSize} ${buttonPosition} ${borderClass} ${shadowType}`}
       onClick={onClick}
     >
       {texto}
