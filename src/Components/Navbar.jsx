@@ -5,6 +5,8 @@ export default function Navbar( {
     navList = false,
     links = [],
     text_Search = "Search",
+    color = "white",
+    inputSearch = false,
 
     brandContent,
     buttonContent
@@ -24,8 +26,18 @@ export default function Navbar( {
         ? "me-auto mb-2 mb-lg-0"
         : "";
 
+    const bg_color = {
+        "blue": "primary",
+        "red": "danger",
+        "green": "success",
+        "yellow": "warning",    
+        "gray": "secondary",
+        "black": "dark",
+        "white": "light"
+    }[color];
+    
     return(
-        <nav className={`navbar ${navbar_expand} bg-body-tertiary`}>
+        <nav className={`navbar ${navbar_expand} bg-${bg_color}`}>
             <div className="container-fluid">
                 
                 {texto && <a className="navbar-brand" href="#">
@@ -49,10 +61,10 @@ export default function Navbar( {
                         ))}
                     </ul>}
                     
-                    {buttonContent  && <form className="d-flex" role="search">
+                    {inputSearch  && <form className="d-flex" role="search">
                         <input className="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"/>
-                        {buttonContent}
                     </form>}
+                    {buttonContent}
                 </div>
             </div>
         </nav>
