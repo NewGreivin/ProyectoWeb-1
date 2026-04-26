@@ -11,6 +11,8 @@ export default function Card({
 }
 ) {
 
+    const isHexColor = (color) => /^#[0-9A-F]{6}$/i.test(color);
+
     const color_fondo = {
         "blue": "text-bg-primary",
         "grey": "text-bg-secondary",
@@ -39,8 +41,14 @@ export default function Card({
         "right": "text-end"
     }[alineado];
 
+    const dynamicStyle = {
+        width: "18rem",
+        ...(isHexColor(color_background) && { backgroundColor: color_background }),
+        ...(isHexColor(color_texto) && { color: color_texto })
+    };
+
     return (
-        <div className={`card ${color_fondo} ${color_text} ${alineacion} shadow rounded`} style={{ width: "18rem" }}>
+        <div className={`card ${!isHexColor(color_background) ? color_fondo : ''} ${!isHexColor(color_texto) ? color_text : ''} ${alineacion} shadow rounded`} style={dynamicStyle}>
 
             {header && <div className="card-header">{header}</div>}
 
