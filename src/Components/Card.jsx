@@ -1,5 +1,5 @@
 export default function Card({
-    color_background = "black",
+    color_background = "#ffff",
     color_texto = "white",
     alineado = "center",
     header,
@@ -10,17 +10,6 @@ export default function Card({
     chil_bottom
 }
 ) {
-
-    const color_fondo = {
-        "blue": "text-bg-primary",
-        "grey": "text-bg-secondary",
-        "green": "text-bg-success",
-        "red": "text-bg-danger",
-        "yellow": "text-bg-warning",
-        "skyblue": "text-bg-info",
-        "white": "text-bg-light",
-        "black": "text-bg-dark"
-    }[color_background];
 
     const color_text = {
         "blue": "text-primary",
@@ -40,7 +29,7 @@ export default function Card({
     }[alineado];
 
     return (
-        <div className={`card ${color_fondo} ${color_text} ${alineacion} shadow rounded`} style={{ width: "18rem" }}>
+        <div className={`card ${color_text} ${alineacion} shadow rounded`} style={{ width: "18rem", backgroundColor: color_background }}>
 
             {header && <div className="card-header">{header}</div>}
 
