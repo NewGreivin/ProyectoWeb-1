@@ -5,6 +5,7 @@ export default function Card({
     header,
     footer,
     card_width = "18rem",
+    responsivo = false,
 
 
     chil_top,
@@ -30,8 +31,10 @@ export default function Card({
         "right": "text-end"
     }[alineado];
 
+    const card_responsive = responsivo ? "w-100" : "";
+
     return (
-        <div className={`card ${color_text} ${alineacion} shadow rounded`} style={{ width: card_width, backgroundColor: color_background }}>
+        <div className={`card ${color_text} ${alineacion} shadow rounded ${card_responsive}`} style={{ width: card_width, backgroundColor: color_background }}>
 
             {header && <div className="card-header">{header}</div>}
 
