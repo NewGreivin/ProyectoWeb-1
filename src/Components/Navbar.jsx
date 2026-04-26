@@ -1,11 +1,11 @@
 export default function Navbar( { 
     
-    clases = "navbar-expand-lg", 
+    clases = "lg", 
     texto = "Navbar",
     navList = false,
     links = [],
     text_Search = "Search",
-    color = "white",
+    color = "#ffffff",
     inputSearch = false,
 
     brandContent,
@@ -26,18 +26,8 @@ export default function Navbar( {
         ? "me-auto mb-2 mb-lg-0"
         : "";
 
-    const bg_color = {
-        "blue": "primary",
-        "red": "danger",
-        "green": "success",
-        "yellow": "warning",    
-        "gray": "secondary",
-        "black": "dark",
-        "white": "light"
-    }[color];
-    
     return(
-        <nav className={`navbar ${navbar_expand} bg-${bg_color}`}>
+        <nav className={`navbar ${navbar_expand}`} style={{ backgroundColor: color }}> 
             <div className="container-fluid">
                 
                 {texto && <a className="navbar-brand" href="#">
