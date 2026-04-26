@@ -12,10 +12,17 @@ function useTriviaQuestions() {
     setError(null);
     try {
       const data = await getTriviaQuestions(options);
+      
       const processedQuestions = (Array.isArray(data) ? data : [data])
         .filter(q => q && typeof q === 'object')
-        .map(processTriviaQuestion)
-        .filter(q => q); // Filtrar nulos o indefinidos
+        .map((q) => {
+          try {
+            return processTriviaQuestion(q);
+          } catch {
+            return null;
+          }
+        })
+        .filter(q => q);
       
       if (processedQuestions.length === 0) {
         throw new Error('No se obtuvieron preguntas válidas');

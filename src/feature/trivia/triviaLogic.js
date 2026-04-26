@@ -24,7 +24,12 @@ function processTriviaQuestion(question) {
     throw new Error('Pregunta de trivia inválida');
   }
 
-  const questionText = question.question || question.Q || '';
+  let questionText = question.question || question.Q || '';
+  
+  if (typeof questionText === 'object' && questionText !== null) {
+    questionText = questionText.text || questionText.title || questionText.content || '';
+  }
+  
   const correctAnswer = question.correct_answer || question.correctAnswer || question.answer || '';
   const incorrectAnswers = question.incorrect_answers || question.incorrectAnswers || [];
 
