@@ -1,4 +1,4 @@
-export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, sombra, onClick }) {
+export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, colorTexto, sombra, onClick }) {
   
   const buttonColor = {
     "azul": "btn-primary",
@@ -10,6 +10,17 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "blanco": "btn-light",
     "negro": "btn-dark"
   }[color];
+
+  const coloresTexto = {
+    "azul": "text-primary",
+    "gris": "text-secondary",
+    "verde": "text-success",
+    "rojo": "text-danger",
+    "amarillo": "text-warning",
+    "celeste": "text-info",
+    "blanco": "text-light",
+    "negro": "text-dark"
+  };
 
   const buttonSize = {
     "grande": "btn-lg",
@@ -33,6 +44,8 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "negro": "border-dark"
   }[colorBorde];
 
+  const textColor = coloresTexto[colorTexto];
+
   const shadowType = {
     "pequeña": "shadow-sm",
     "normal": "shadow",
@@ -44,7 +57,7 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
   return (
     <button
       type="button"
-      className={`btn ${buttonColor} ${buttonSize} ${buttonPosition} ${borderClass} ${shadowType}`}
+      className={`btn ${buttonColor} ${buttonSize} ${buttonPosition} ${borderClass} ${shadowType} ${textColor}`}
       onClick={onClick}
     >
       {texto}
