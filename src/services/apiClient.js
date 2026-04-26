@@ -3,7 +3,7 @@ class APIClient {
     this.defaultHeaders = {
       'Content-Type': 'application/json',
     };
-    this.timeout = 10000; // 10 segundos
+    this.timeout = 30000;
   }
 
   async request(url, options = {}, context = 'API') {
