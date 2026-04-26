@@ -1,4 +1,4 @@
-export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, colorTexto, sombra, onClick }) {
+export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, colorTexto, sombra = "", onClick }) {
   
   const buttonColor = {
     "azul": "btn-primary",
@@ -49,7 +49,7 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "pequeña": "shadow-sm",
     "normal": "shadow",
     "grande": "shadow-lg"
-  }[sombra];
+  }[sombra] || "";
 
   const borderClass = mostrarBorde ? `border ${borderColor}` : "";
 
