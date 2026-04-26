@@ -1,25 +1,36 @@
 import Button from './Buttons';
+import Texto from './Texto';
+import Titulo from './Titulo';
+
 export default function Alert({
+  titulo,
   texto,
-  color = "primary",
+  color,
   dismissible = false,
-  onDismiss,
-  children
+  onDismiss
 }) {
 
-  const alertColors = [
-    "primary", "secondary", "success", "danger",
-    "warning", "info", "light", "dark"
-  ];
+  const alertColor = {
+    "azul": "alert-primary",
+    "gris": "alert-secondary",
+    "verde": "alert-success",
+    "rojo": "alert-danger",
+    "amarillo": "alert-warning",
+    "celeste": "alert-info",
+    "blanco": "alert-light",
+    "negro": "alert-dark"
+  }[color] || "azul";
+
   return (
     <div
-      className={`alert alert-${color} ${dismissible ? "alert-dismissible fade show" : ""}`}
+      className={`alert ${alertColor} ${dismissible ? "alert-dismissible fade show" : ""}`}
       role="alert"
     >
-      {texto || children}
+      {titulo && <Titulo texto={titulo} />}
+      {texto && <Texto texto={texto} />}
 
       {dismissible && (
-        <Button texto="×" color="primary" tamano="sm" onClick={onDismiss} />
+        <Button texto="×" color={color} tamano="pequeño" onClick={onDismiss} />
       )}
     </div>
   );
