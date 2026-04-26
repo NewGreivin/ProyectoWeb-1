@@ -4,6 +4,8 @@ export default function Card({
     alineado = "center",
     header,
     footer,
+    card_width = "18rem",
+
 
     chil_top,
     chil_body,
@@ -29,7 +31,7 @@ export default function Card({
     }[alineado];
 
     return (
-        <div className={`card ${color_text} ${alineacion} shadow rounded`} style={{ width: "18rem", backgroundColor: color_background }}>
+        <div className={`card ${color_text} ${alineacion} shadow rounded`} style={{ width: card_width, backgroundColor: color_background }}>
 
             {header && <div className="card-header">{header}</div>}
 
