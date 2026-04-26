@@ -1,11 +1,12 @@
 export default function Card({
     color_background = "#ffff",
     color_texto = "white",
-    alineado = "center",
+    alineado_card = "",
     header,
     footer,
     card_width = "18rem",
     responsivo = false,
+    texto_alineado = "center",
 
 
     chil_top,
@@ -15,26 +16,32 @@ export default function Card({
 ) {
 
     const color_text = {
-        "blue": "text-primary",
-        "grey": "text-secondary",
-        "green": "text-success",
-        "red": "text-danger",
-        "yellow": "text-warning",
-        "skyblue": "text-info",
-        "white": "text-light",
-        "black": "text-dark"
+      "blue": "text-primary",
+      "grey": "text-secondary",
+      "green": "text-success",
+      "red": "text-danger",
+      "yellow": "text-warning",
+      "skyblue": "text-info",
+      "white": "text-light",
+      "black": "text-dark"
     }[color_texto];
 
-    const alineacion = {
-        "left": "text-start",
-        "center": "text-center",
-        "right": "text-end"
-    }[alineado];
+    const alineacion_card = {
+      "left": "me-auto",
+      "center": "mx-auto",
+      "right": "ms-auto"
+    }[alineado_card];
+
+    const alineado_text = {
+      "left": "text-start",
+      "center": "text-center",
+      "right": "text-end"
+    }[texto_alineado];
 
     const card_responsive = responsivo ? "w-100" : "";
 
     return (
-        <div className={`card ${color_text} ${alineacion} shadow rounded ${card_responsive}`} style={{ width: card_width, backgroundColor: color_background }}>
+        <div className={`card ${color_text} ${alineacion_card} ${alineado_text} shadow rounded ${card_responsive}`} style={{ width: card_width, backgroundColor: color_background }}>
 
             {header && <div className="card-header">{header}</div>}
 
