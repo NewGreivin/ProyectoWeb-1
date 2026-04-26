@@ -20,7 +20,7 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "celeste": "text-info",
     "blanco": "text-light",
     "negro": "text-dark"
-  };
+  }[colorTexto] || "";
 
   const buttonSize = {
     "grande": "btn-lg",
@@ -28,9 +28,9 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
   }[tamano];
 
   const buttonPosition = {
-    "izquierda": "text-start",
-    "centro": "text-center",
-    "derecha": "text-end"
+    "izquierda": "",
+    "centro": "mx-auto d-block",
+    "derecha": "ms-auto"
   }[posicion];
 
   const borderColor = {
@@ -42,9 +42,8 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "celeste": "border-info",
     "blanco": "border-light",
     "negro": "border-dark"
-  }[colorBorde];
+  }[colorBorde] || "";
 
-  const textColor = coloresTexto[colorTexto];
 
   const shadowType = {
     "pequeña": "shadow-sm",
@@ -52,7 +51,6 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "grande": "shadow-lg"
   }[sombra];
 
-  const borderClass = mostrarBorde ? `border ${borderColor}` : "";
 
   return (
     <button
