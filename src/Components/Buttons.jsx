@@ -42,7 +42,7 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "celeste": "border-info",
     "blanco": "border-light",
     "negro": "border-dark"
-  }[colorBorde] || "";
+  }[colorBorde];
 
 
   const shadowType = {
@@ -51,11 +51,12 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
     "grande": "shadow-lg"
   }[sombra];
 
+  const borderClass = mostrarBorde ? `border ${borderColor}` : "";
 
   return (
     <button
       type="button"
-      className={`btn ${buttonColor} ${buttonSize} ${buttonPosition} ${borderClass} ${shadowType} ${textColor}`}
+      className={`btn ${buttonColor} ${buttonSize} ${buttonPosition} ${borderClass} ${shadowType} ${coloresTexto}`}
       onClick={onClick}
     >
       {texto}
