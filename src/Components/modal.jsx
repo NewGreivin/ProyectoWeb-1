@@ -1,112 +1,105 @@
 import Titulo from "./Titulo";
 import Button from "./Buttons";
 
-const modalTamanos = {
-  pequeno: "modal-sm",
-  largo: "modal-lg",
-  extraLargo: "modal-xl",
-};
-
-const modalPosiciones = {
-  centro: "modal-dialog-centered",
-  arriba: "mt-4",
-  abajo: "mt-auto mb-4",
-};
-
 export default function Modal({
   isOpen = false,
   onClose,
   onSave,
-  titulo,
-  btnSecundario,
-  btnPrimario,
+  titulo = "Título del modal",
+  botonCerrar = "Cerrar",
+  botonGuardar = "Guardar",
   tamano = "",
-  posicion = "centro",
+  centrado = true,
   scrollable = false,
   staticBackdrop = false,
   soloCerrar = false,
-  colorModal = "",
-  estilosModal = {},
-  propsBtnSecundario = {},
-  propsBtnPrimario = {},
   children,
 }) {
   if (!isOpen) return null;
 
+  const tamanos = {
+    sm: "modal-sm",
+    lg: "modal-lg",
+    xl: "modal-xl",
+  };
+
   const claseDialogo = [
     "modal-dialog",
-    modalTamanos[tamano],
-    modalPosiciones[posicion],
+    tamanos[tamano],
+    centrado && "modal-dialog-centered",
     scrollable && "modal-dialog-scrollable",
   ]
     .filter(Boolean)
     .join(" ");
+
+  const cerrarPorFondo = () => {
+    if (!staticBackdrop) onClose?.();
+  };
+
+  const evitarCierreInterno = (e) => {
+    e.stopPropagation();
+  };
+
+  const guardarYCerrar = () => {
+    onSave?.();
+    onClose?.();
+  };
+
+  const mostrarFooter = onClose || (!soloCerrar && onSave);
 
   return (
     <>
       <div className="modal-backdrop fade show"></div>
 
       <div
-        className="modal fade show d-flex"
-        tabIndex="-1"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="modal-title"
-        style={{ minHeight: "100vh" }}
-        onClick={() => !staticBackdrop && onClose?.()}
+        className="modal fade show d-block"
+        onClick={cerrarPorFondo}
       >
-        <div className={claseDialogo} onClick={(e) => e.stopPropagation()}>
-          <div className={`modal-content ${colorModal}`} style={estilosModal}>
+        <div className={claseDialogo} onClick={evitarCierreInterno}>
+          <div className="modal-content">
+
             <div className="modal-header">
-              {titulo && (
-                <Titulo
-                  id="modal-title"
-                  className="modal-title fs-5"
-                  tipografia="h5"
-                  texto={titulo}
-                  alineado="left"
-                />
-              )}
+              <Titulo
+                tipografia="h5"
+                texto={titulo}
+                alineado="left"
+              />
 
               <button
-                type="button"
                 className="btn-close"
-                aria-label="Cerrar"
                 onClick={onClose}
               />
             </div>
 
-            <div className="modal-body">{children}</div>
+           
+            <div className="modal-body">
+              {children}
+            </div>
 
-            {(onClose || onSave) && (
+            {mostrarFooter && (
               <div className="modal-footer">
-                {onClose && btnSecundario && (
+
+                {onClose && (
                   <Button
-                    texto={btnSecundario}
-                    color={propsBtnSecundario.color || "gris"}
-                    tamano={propsBtnSecundario.tamano || "pequeño"}
-                    mostrarBorde={propsBtnSecundario.mostrarBorde}
-                    colorBorde={propsBtnSecundario.colorBorde}
-                    sombra={propsBtnSecundario.sombra}
-                    posicion={propsBtnSecundario.posicion}
+                    texto={botonCerrar}
+                    color="secondary"
+                    tamano="sm"
                     onClick={onClose}
                   />
                 )}
 
-                {!soloCerrar && onSave && btnPrimario && (
+                {!soloCerrar && onSave && (
                   <Button
-                    texto={btnPrimario}
-                    color={propsBtnPrimario.color || "azul"}
-                    tamano={propsBtnPrimario.tamano || "pequeño"}
-                    mostrarBorde={propsBtnPrimario.mostrarBorde}
-                    colorBorde={propsBtnPrimario.colorBorde}
-                    sombra={propsBtnPrimario.sombra}
-                    posicion={propsBtnPrimario.posicion}
-                    onClick={onSave}
+                    texto={botonGuardar}
+                    color="primary"
+                    tamano="sm"
+                    onClick={guardarYCerrar}
                   />
                 )}
+
               </div>
             )}
+
           </div>
         </div>
       </div>
