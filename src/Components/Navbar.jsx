@@ -7,6 +7,7 @@ export default function Navbar( {
     text_Search = "Search",
     color = "#ffffff",
     inputSearch = false,
+    reponsive_navbar = true,
 
     brandContent,
     buttonContent
@@ -35,9 +36,9 @@ export default function Navbar( {
                     {texto}
                 </a>}
 
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                {reponsive_navbar && <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
-                </button>
+                </button>}
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
