@@ -29,6 +29,7 @@ export default function Modal({
   estilosModal = {},
   propsBtnSecundario = {},
   propsBtnPrimario = {},
+  colorTextoTitulo = "black",
   children,
 }) {
   if (!isOpen) return null;
@@ -65,6 +66,8 @@ export default function Modal({
                   tipografia="h5"
                   texto={titulo}
                   alineado="left"
+                  color={colorTextoTitulo}
+                />
                 />
               )}
 
