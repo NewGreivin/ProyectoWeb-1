@@ -68,7 +68,6 @@ export default function Modal({
                   alineado="left"
                   color={colorTextoTitulo}
                 />
-                />
               )}
 
               <button
