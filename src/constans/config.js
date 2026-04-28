@@ -24,40 +24,18 @@ export const APP_LIMITS = {
   API_TIMEOUT_MS: 10000,
 };
 
+export const FEATURES = {
+  ENABLE_AUTO_TRANSLATE: false,
+};
+
 export const LANGUAGES = {
   ES: 'es',
   EN: 'en',
-  FR: 'fr',
-  DE: 'de',
-  PT: 'pt',
-  IT: 'it',
-  JA: 'ja',
-  ZH: 'zh',
-  RU: 'ru',
-  KO: 'ko',
-  AR: 'ar',
-  NL: 'nl',
-  PL: 'pl',
-  TR: 'tr',
-  VI: 'vi',
 };
 
 export const LANGUAGE_LABELS = {
   es: 'Español',
   en: 'English',
-  fr: 'Français',
-  de: 'Deutsch',
-  pt: 'Português',
-  it: 'Italiano',
-  ja: '日本語',
-  zh: '中文',
-  ru: 'Русский',
-  ko: '한국어',
-  ar: 'العربية',
-  nl: 'Nederlands',
-  pl: 'Polski',
-  tr: 'Türkçe',
-  vi: 'Tiếng Việt',
 };
 
 export const TRIVIA_DIFFICULTIES = {
@@ -70,4 +48,47 @@ export const DIFFICULTY_LABELS = {
   easy: 'Fácil',
   medium: 'Medio',
   hard: 'Difícil',
+};
+
+export const TRIVIA_CATEGORIES = {
+  ARTS_LITERATURE: {
+    es: 'Artes y Literatura',
+    code: 'arts_and_literature',
+  },
+  FILM_TV: {
+    es: 'Películas y TV',
+    code: 'film_and_tv',
+  },
+  FOOD_DRINK: {
+    es: 'Comida y Bebida',
+    code: 'food_and_drink',
+  },
+  GENERAL_KNOWLEDGE: {
+    es: 'Conocimiento General',
+    code: 'general_knowledge',
+  },
+  GEOGRAPHY: {
+    es: 'Geografía',
+    code: 'geography',
+  },
+  HISTORY: {
+    es: 'Historia',
+    code: 'history',
+  },
+  MUSIC: {
+    es: 'Música',
+    code: 'music',
+  },
+  SCIENCE: {
+    es: 'Ciencia',
+    code: 'science',
+  },
+  SOCIETY_CULTURE: {
+    es: 'Sociedad y Cultura',
+    code: 'society_and_culture',
+  },
+  SPORT_LEISURE: {
+    es: 'Deporte y Ocio',
+    code: 'sport_and_leisure',
+  },
 };

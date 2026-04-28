@@ -73,4 +73,28 @@ function groupQuestionsByCategory(questions) {
   }, {});
 }
 
-export { validateTriviaQuestion, shuffleAnswers, decodeHTMLEntities, processTriviaQuestion, validateAnswer, calculateScore, groupQuestionsByCategory };
+async function translateTriviaQuestion(question, translateFn) {
+  try {
+    const translatedQuestion = await translateFn(question.question);
+    const translatedCorrectAnswer = await translateFn(question.correctAnswer);
+    const translatedIncorrectAnswers = await Promise.all(
+      question.incorrectAnswers.map(answer => translateFn(answer))
+    );
+    const translatedShuffledAnswers = await Promise.all(
+      question.shuffledAnswers.map(answer => translateFn(answer))
+    );
+
+    return {
+      ...question,
+      question: translatedQuestion,
+      correctAnswer: translatedCorrectAnswer,
+      incorrectAnswers: translatedIncorrectAnswers,
+      shuffledAnswers: translatedShuffledAnswers,
+    };
+  } catch (error) {
+    console.error('Error traduciendo pregunta:', error);
+    return question;
+  }
+}
+
+export { validateTriviaQuestion, shuffleAnswers, decodeHTMLEntities, processTriviaQuestion, validateAnswer, calculateScore, groupQuestionsByCategory, translateTriviaQuestion };

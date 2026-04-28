@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react';
 import {getTriviaQuestions,getTriviaCategories,getRandomTriviaQuestion,} from './triviaService.js';
-import { processTriviaQuestion } from './triviaLogic.js';
+import { processTriviaQuestion, translateTriviaQuestion } from './triviaLogic.js';
+import { translateText } from '../translator/translatorService.js';
+import { FEATURES } from '../../constans/config.js';
 
 function useTriviaQuestions() {
   const [questions, setQuestions] = useState([]);
@@ -28,8 +30,20 @@ function useTriviaQuestions() {
         throw new Error('No se obtuvieron preguntas válidas');
       }
       
-      setQuestions(processedQuestions);
-      return processedQuestions;
+      let finalQuestions = processedQuestions;
+      
+      if (FEATURES.ENABLE_AUTO_TRANSLATE) {
+        finalQuestions = await Promise.all(
+          processedQuestions.map((q) =>
+            translateTriviaQuestion(q, (text) =>
+              translateText(text, 'es', 'en')
+            )
+          )
+        );
+      }
+      
+      setQuestions(finalQuestions);
+      return finalQuestions;
     } catch (err) {
       setError(err.message);
       throw err;
