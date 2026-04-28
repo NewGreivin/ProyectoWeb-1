@@ -1,5 +1,4 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { validateAnswer } from '../feature/trivia/triviaLogic';
 import Button from '../Components/Buttons';
 import Card from '../Components/Card';
 import Titulo from '../Components/Titulo';
@@ -9,75 +8,85 @@ export default function PAnswer_Result() {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const { selectedAnswer, correctAnswer} = location.state || {};
-
-  if (!selectedAnswer || !correctAnswer) {
-    return (
-      <div className="d-flex justify-content-center align-items-center min-vh-100">
-        <Card color_background="red" alineado="center" chil_body={
-          <>
-            <Titulo 
-              tipografia="h2" 
-              texto="Error" 
-              alineado="center"
-              color_text="white"
-            />
-            <Texto 
-              texto="No se encontraron los datos de la pregunta."
-              alineado="center"
-              color_text="white"
-            />
-            <Button 
-              texto="Volver al inicio" 
-              color="azul" 
-              tamano="grande"
-              onClick={() => navigate('/')}
-            />
-          </>
-        } />
-      </div>
-    );
-  }
-
-  const isCorrect = validateAnswer(selectedAnswer, correctAnswer);
+  const {
+    selectedAnswer,
+    correctAnswer,
+    isCorrect,
+    score,
+    currentIndex,
+    totalQuestions,
+    questionList,
+    category,
+    difficulty,
+    time,
+    timedOut
+  } = location.state || {};
 
   const handleNextQuestion = () => {
-    navigate('/questions');
+    if (currentIndex < totalQuestions - 1) {
+      navigate("/questions", {
+        state: {
+          score,
+          currentIndex: currentIndex + 1,
+          totalQuestions,
+          questionList,
+          category,
+          difficulty,
+          time,
+        },
+      });
+    } else {
+      navigate("/result", {
+        state: {
+          score,
+          totalQuestions,
+          correctAnswers: currentIndex + 1,
+        },
+      });
+    }
   };
 
   return (
-    <div 
-      className={isCorrect ? 'bg-answer-correct' : 'bg-answer-incorrect'}
-    >
+    <div className={isCorrect ? "bg-answer-correct" : "bg-answer-incorrect"}>
       <div className="container-result">
         <Texto 
-          texto={isCorrect ? '✓' : '✗'}
+          texto={isCorrect ? "✓" : "✗"}
           alineado="center"
           color_text="white"
           tamano_letra="1"
         />
         <Titulo 
           tipografia="h1" 
-          texto={isCorrect ? '¡Correcto!' : '¡Incorrecto!'}
+          texto={isCorrect ? "¡Correcto!" : timedOut ? "No has respondido a tiempo" : "¡Incorrecto!"}
           alineado="center"
           color_text="white"
         />
         <Texto 
           texto={isCorrect 
-            ? '¡Excelente! Sigue adelante.' 
-            : 'No te rindas, la próxima irá mejor.'}
+            ? "¡Excelente! Sigue adelante." 
+            : timedOut ? "Se acabo el tiempo" : "No te rindas, la próxima irá mejor."}
           alineado="center"
           color_text="white"
         />
 
-        <div className="d-flex justify-content-center mb-4">
-          <Card 
-            color_background={isCorrect ? "green" : "red"} 
+        {isCorrect && (
+          <Texto 
+            texto={"+100 puntos"}
             alineado="center"
+            color_text="#ffffff"
+            tamano_letra="4"
+            className="mb-4"
+          />
+        )}
+
+        <div className="d-flex mb-4">
+          <Card 
+            color_background={isCorrect ? "#1a8a58" : "#db3246"} 
+            alineado_card="center"
             chil_body={
               <>
                 <Texto 
-                  texto={isCorrect ? 'TU RESPUESTA:' : 'LA RESPUESTA CORRECTA ERA:'}
+                  texto={isCorrect ? "TU RESPUESTA:" : timedOut ? "LA RESPUESTA CORRECTA ERA:" : "LA RESPUESTA CORRECTA ERA:"}
                   alineado="center"
                   color_text="white"
                 />
@@ -92,18 +101,16 @@ export default function PAnswer_Result() {
           />
         </div>
 
-        {/* Next Button */}
-        <div className="text-center">
           <Button 
             texto="Siguiente pregunta →" 
-            color={isCorrect ? 'verde' : 'rojo'}
+            color={isCorrect ? "verde" : "rojo"}
             tamano="grande"
+            posicion="centro"
             onClick={handleNextQuestion}
             mostrarBorde={true}
-            colorBorde={isCorrect ? 'verde' : 'rojo'}
+            colorBorde={isCorrect ? "verde" : "rojo"}
             sombra="grande"
           />
-        </div>
       </div>
     </div>
   );
