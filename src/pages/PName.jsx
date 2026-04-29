@@ -80,7 +80,7 @@ export default function PName() {
                                 sombra='grande'
                                 onClick={() => {
                                     localStorage.setItem('playerName', nombre)
-                                    navigate('/pconfig')
+                                    navigate('/config')
                                 }}
                             />
 
