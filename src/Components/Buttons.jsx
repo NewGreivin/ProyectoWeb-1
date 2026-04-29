@@ -1,4 +1,4 @@
-export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, colorTexto, sombra = "", onClick }) {
+export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, colorTexto, sombra = "", onClick, paddingY, paddingX, fontSize, children }) {
   
   const buttonColor = {
     "azul": "btn-primary",
@@ -53,13 +53,20 @@ export default function Button({ texto, color, tamano, posicion, mostrarBorde = 
 
   const borderClass = mostrarBorde ? `border ${borderColor}` : "";
 
+  const customStyles = {
+    ...(paddingY && { "--bs-btn-padding-y": paddingY }),
+    ...(paddingX && { "--bs-btn-padding-x": paddingX }),
+    ...(fontSize && { "--bs-btn-font-size": fontSize })
+  };
+
   return (
     <button
       type="button"
       className={`btn ${buttonColor} ${buttonSize} ${buttonPosition} ${borderClass} ${shadowType} ${coloresTexto}`}
+      style={customStyles}
       onClick={onClick}
     >
-      {texto}
+      {children || texto}
     </button>
   );
 }
