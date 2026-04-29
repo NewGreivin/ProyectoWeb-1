@@ -20,14 +20,10 @@ export default function PConfig() {
 
     const navigate = useNavigate();
 
-    const [settings, setSettings] = useState({
-        category: '',
-        difficulty: 'medium',
-        time: 35,
-    });
+    const [category, setCategory] = useState('');
+    const [difficulty, setDifficulty] = useState('medium');
 
     const Nombre = localStorage.getItem('playerName');
-    console.log(Nombre);
 
     return (
     <>
@@ -95,9 +91,9 @@ export default function PConfig() {
                                         value: category.code,
                                         text: category.es
                                     }))}
-                                    value={settings.category}
+                                    value={category}
                                     onChange={(e) =>
-                                        setSettings({ ...settings, category: e.target.value })
+                                        setCategory(e.target.value)
                                     }
                                 />
 
@@ -110,14 +106,9 @@ export default function PConfig() {
                                         value: value,
                                         text: `${DIFFICULTY_LABELS[value]} (${DIFFICULTY_TIMES[value]}s)`
                                     }))}
-                                    value={settings.difficulty}
+                                    value={difficulty}
                                     onChange={(e) => {
-                                        const value = e.target.value;
-                                        setSettings({
-                                            ...settings,
-                                            difficulty: value,
-                                            time: DIFFICULTY_TIMES[value]
-                                        });
+                                        setDifficulty(e.target.value);
                                     }}
                                 />
                             </>
@@ -132,8 +123,12 @@ export default function PConfig() {
                                     sombra='grande'
                                     tamano='grande'
                                     onClick={() => {
-                                        console.log('Configuracion Guardada:', settings);
-                                        navigate('/pquestions', { state: settings });
+                                        const settings = {
+                                            category: category,
+                                            difficulty: difficulty,
+                                            time: DIFFICULTY_TIMES[difficulty]
+                                        };
+                                        navigate('/questions', { state: settings });
                                     }}
                                 />
                             </div>
