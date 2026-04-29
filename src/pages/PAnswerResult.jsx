@@ -19,7 +19,8 @@ export default function PAnswer_Result() {
     category,
     difficulty,
     time,
-    timedOut
+    timedOut,
+    correctAnswers
   } = location.state || {};
 
   const handleNextQuestion = () => {
@@ -27,6 +28,7 @@ export default function PAnswer_Result() {
       navigate("/questions", {
         state: {
           score,
+          correctAnswers,
           currentIndex: currentIndex + 1,
           totalQuestions,
           questionList,
@@ -40,7 +42,7 @@ export default function PAnswer_Result() {
         state: {
           score,
           totalQuestions,
-          correctAnswers: currentIndex + 1,
+          correctAnswers,
         },
       });
     }
