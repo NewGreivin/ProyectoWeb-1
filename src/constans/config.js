@@ -50,6 +50,12 @@ export const DIFFICULTY_LABELS = {
   hard: 'Difícil',
 };
 
+export const DIFFICULTY_TIMES = {
+  easy: 45,
+  medium: 35,
+  hard: 20,
+};
+
 export const TRIVIA_CATEGORIES = {
   ARTS_LITERATURE: {
     es: 'Artes y Literatura',
