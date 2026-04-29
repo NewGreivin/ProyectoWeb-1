@@ -1,4 +1,17 @@
-export default function Button({ texto, color, tamano, posicion, mostrarBorde = false, colorBorde, colorTexto, sombra = "", onClick, paddingY, paddingX, fontSize, children }) {
+export default function Button({ 
+  texto, 
+  color, 
+  tamano, 
+  posicion, 
+  mostrarBorde = false, 
+  colorBorde, 
+  colorTexto, 
+  sombra = "", 
+  onClick, 
+  paddingY, 
+  paddingX, 
+  fontSize, 
+  children }) {
   
   const buttonColor = {
     "azul": "btn-primary",

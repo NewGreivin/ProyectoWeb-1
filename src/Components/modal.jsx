@@ -1,7 +1,22 @@
-import Titulo from "./Titulo";
-import Button from "./Buttons";
+export default function Modal({
+  isOpen = false,
+  onClose,
+  onSave,
+  
+  tamano = "",
+  posicion = "centro",
+  scrollable = false,
+  staticBackdrop = false,  
+  colorModal = "",
+  estilosModal = {},
 
-const modalTamanos = {
+  chil_titulo,
+  chil_body,
+  chil_footer,
+}) {
+  if (!isOpen) return null;
+
+  const modalTamanos = {
   pequeno: "modal-sm",
   largo: "modal-lg",
   extraLargo: "modal-xl",
@@ -12,28 +27,6 @@ const modalPosiciones = {
   arriba: "mt-4",
   abajo: "mt-auto mb-4",
 };
-
-export default function Modal({
-  isOpen = false,
-  onClose,
-  onSave,
-  titulo,
-  btnSecundario,
-  btnPrimario,
-  tamano = "",
-  posicion = "centro",
-  scrollable = false,
-  staticBackdrop = false,
-  soloCerrar = false,
-  colorModal = "",
-  estilosModal = {},
-  propsBtnSecundario = {},
-  propsBtnPrimario = {},
-  colorTextoTitulo = "black",
-  children,
-}) {
-  if (!isOpen) return null;
-
   const claseDialogo = [
     "modal-dialog",
     modalTamanos[tamano],
@@ -47,6 +40,7 @@ export default function Modal({
     <>
       <div className="modal-backdrop fade show"></div>
 
+      // Modal principal
       <div
         className="modal fade show d-flex"
         tabIndex="-1"
@@ -55,21 +49,21 @@ export default function Modal({
         aria-labelledby="modal-title"
         style={{ minHeight: "100vh" }}
         onClick={() => !staticBackdrop && onClose?.()}
-      >
+      > 
+        
         <div className={claseDialogo} onClick={(e) => e.stopPropagation()}>
+          // Aquí va el contenido del modal
           <div className={`modal-content ${colorModal}`} style={estilosModal}>
-            <div className="modal-header">
-              {titulo && (
-                <Titulo
-                  id="modal-title"
-                  className="modal-title fs-5"
-                  tipografia="h5"
-                  texto={titulo}
-                  alineado="left"
-                  color={colorTextoTitulo}
-                />
-              )}
 
+            // Encabezado del modal
+            <div className="modal-header">
+              // Título del modal (opcional)
+              {chil_titulo && (
+                <div id="modal-title" className="modal-title">
+                  {chil_titulo}
+                </div>
+              )}
+            // Botón de cierre
               <button
                 type="button"
                 className="btn-close"
@@ -77,36 +71,13 @@ export default function Modal({
                 onClick={onClose}
               />
             </div>
-
-            <div className="modal-body">{children}</div>
-
-            {(onClose || onSave) && (
+              // Cuerpo del modal
+            <div className="modal-body">{chil_body}</div>
+            
+              // Pie del modal (opcional)
+            {chil_footer && (
               <div className="modal-footer">
-                {onClose && btnSecundario && (
-                  <Button
-                    texto={btnSecundario}
-                    color={propsBtnSecundario.color || "gris"}
-                    tamano={propsBtnSecundario.tamano || "pequeño"}
-                    mostrarBorde={propsBtnSecundario.mostrarBorde}
-                    colorBorde={propsBtnSecundario.colorBorde}
-                    sombra={propsBtnSecundario.sombra}
-                    posicion={propsBtnSecundario.posicion}
-                    onClick={onClose}
-                  />
-                )}
-
-                {!soloCerrar && onSave && btnPrimario && (
-                  <Button
-                    texto={btnPrimario}
-                    color={propsBtnPrimario.color || "azul"}
-                    tamano={propsBtnPrimario.tamano || "pequeño"}
-                    mostrarBorde={propsBtnPrimario.mostrarBorde}
-                    colorBorde={propsBtnPrimario.colorBorde}
-                    sombra={propsBtnPrimario.sombra}
-                    posicion={propsBtnPrimario.posicion}
-                    onClick={onSave}
-                  />
-                )}
+                {chil_footer}
               </div>
             )}
           </div>
