@@ -5,8 +5,6 @@ import PConfig from './pages/PConfig';
 import PQuestions from './pages/PQuestions';
 import PAnswerResult from './pages/PAnswerResult';
 import PResult from './pages/PResult';
-import PResult from './pages/PResult';
-import PAnswerResult from './pages/PAnswerResult';
 
 export default function App() {
   return (
@@ -18,8 +16,6 @@ export default function App() {
         <Route path="/questions" element={<PQuestions />} />
         <Route path="/answer-result" element={<PAnswerResult />} />
         <Route path="/result" element={<PResult />} />
-        <Route path="/result" element={<PResult />} />
-        <Route path="/answer-result" element={<PAnswerResult />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
