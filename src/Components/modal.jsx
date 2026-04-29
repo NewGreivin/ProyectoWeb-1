@@ -12,7 +12,7 @@ export default function Modal({
 
   chil_titulo,
   chil_body,
-  chil_footer,
+
 }) {
   if (!isOpen) return null;
 
@@ -40,7 +40,8 @@ const modalPosiciones = {
     <>
       <div className="modal-backdrop fade show"></div>
 
-      // Modal principal
+      // Modal principal//
+
       <div
         className="modal fade show d-flex"
         tabIndex="-1"
@@ -52,7 +53,8 @@ const modalPosiciones = {
       > 
         
         <div className={claseDialogo} onClick={(e) => e.stopPropagation()}>
-          // Aquí va el contenido del modal
+
+          //Aquí va el contenido del modal//
           <div className={`modal-content ${colorModal}`} style={estilosModal}>
 
             // Encabezado del modal
@@ -63,6 +65,7 @@ const modalPosiciones = {
                   {chil_titulo}
                 </div>
               )}
+
             // Botón de cierre
               <button
                 type="button"
@@ -71,15 +74,10 @@ const modalPosiciones = {
                 onClick={onClose}
               />
             </div>
+            
               // Cuerpo del modal
             <div className="modal-body">{chil_body}</div>
             
-              // Pie del modal (opcional)
-            {chil_footer && (
-              <div className="modal-footer">
-                {chil_footer}
-              </div>
-            )}
           </div>
         </div>
       </div>
