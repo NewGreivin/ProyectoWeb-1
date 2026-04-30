@@ -16,22 +16,16 @@ export default function PResult() {
     const playerName = localStorage.getItem('playerName') || 'Jugador'
     const [showShareModal, setShowShareModal] = useState(false)
     
-    // Recibir datos de location.state 
     const {
-        score = 0,
         correctAnswers = 0,
         totalQuestions = 0,
         selectedCategory = '',
-        categoryDetails = {},
         accuracy = 0,
         totalPoints = 0,
-        maxPoints = 0,
         incorrectCount = 0,
         difficulty = 'medium'
     } = location.state || {}
     
-
-    // Mensaje motivacional según precisión
     const getMotivationalMessage = (acc) => {
         if (acc >= 100) return "¡Increíble resultado perfecto! 🌟"
         if (acc >= 90) return "¡Excelente resultado! 🎉"
@@ -46,12 +40,10 @@ export default function PResult() {
     return category?.es || selectedCategory || 'Sin categoría'
 }
 
-    // Función para generar el mensaje compartible
     const generateShareMessage = () => {
-        return `¡Acabo de obtener ${totalPoints} puntos en Kahhot! 🎮\n${playerName} - ${accuracy}% de precisión\n${correctAnswers}/${totalQuestions} respuestas correctas en ${getCategoryLabel(selectedCategory)}`
+        return `🎮 ¡TRIVIA KAHHOT! 🎮\n\n👤 Jugador: ${playerName}\n\n📊 RESULTADOS:\n✅ Respuestas correctas: ${correctAnswers}/${totalQuestions}\n🎯 Precisión: ${accuracy}%\n⭐ Puntos obtenidos: ${totalPoints}\n📚 Categoría: ${getCategoryLabel(selectedCategory)}\n\n¿Te atreves a superar mi puntuación? 💪`
     }
 
-    // Función para compartir por correo
     const shareByEmail = () => {
         const message = generateShareMessage()
         const subject = `Mi resultado en Kahhot: ${totalPoints} puntos 🎮`
@@ -60,7 +52,6 @@ export default function PResult() {
         setShowShareModal(false)
     }
 
-    // Función para compartir por WhatsApp
     const shareByWhatsApp = () => {
         const message = generateShareMessage()
         const whatsappLink = `https://wa.me/?text=${encodeURIComponent(message)}`
@@ -68,15 +59,9 @@ export default function PResult() {
         setShowShareModal(false)
     }
 
-    // Función para compartir por Facebook
-    const shareByFacebook = () => {
-        const message = generateShareMessage()
-        const facebookLink = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&quote=${encodeURIComponent(message)}`
-        window.open(facebookLink, '_blank')
-        setShowShareModal(false)
-    }
 
-    // Ancho uniforme para card principal, cuadrícula y botones
+
+
     const anchoUniforme = '450px'
 
     return (
@@ -98,10 +83,8 @@ export default function PResult() {
 
             <div style={{ paddingTop: "2rem", paddingBottom: "2rem", minHeight: "90vh" }}>
 
-                {/* Contenedor central con ancho uniforme */}
                 <div style={{ maxWidth: anchoUniforme, margin: '0 auto', padding: '0 12px' }}>
 
-                    {/* Card Principal - Nombre y Puntuación */}
                     <div style={{ marginBottom: "1.5rem" }}>
                         <Card
                             color_background='#5B21B6'
@@ -151,14 +134,12 @@ export default function PResult() {
                         />
                     </div>
 
-                    {/* Cuadrícula 2x2 con estadísticas */}
                     <div style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(2, 1fr)',
                         gap: '8px',
                         marginBottom: '1.5rem'
                     }}>
-                        {/* Card - Correctas */}
                         <Card
                             color_background='#0e7120'
                             color_texto='white'
@@ -179,7 +160,6 @@ export default function PResult() {
                             }
                         />
 
-                        {/* Card - Precisión */}
                         <Card
                             color_background='#a6571a'
                             color_texto='white'
@@ -200,7 +180,6 @@ export default function PResult() {
                             }
                         />
 
-                        {/* Card - Preguntas */}
                         <Card
                             color_background='#323cab'
                             color_texto='white'
@@ -221,7 +200,6 @@ export default function PResult() {
                             }
                         />
 
-                        {/* Card - Dificultad */}
                         <Card
                             color_background='#a99519'
                             color_texto='white'
@@ -242,7 +220,6 @@ export default function PResult() {
                             }
                         />
 
-                        {/* Card - Categoría */}
                         <Card
                             color_background='#5120a5'
                             color_texto='white'
@@ -263,7 +240,6 @@ export default function PResult() {
                             }
                         />
 
-                        {/* Card - Incorrectas */}
                         <Card
                             color_background='#aa1c1c'
                             color_texto='white'
@@ -285,7 +261,6 @@ export default function PResult() {
                         />
                     </div>
 
-                    {/* Botones Finales - ancho completo, apilados */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '2rem' }}>
                         <div style={{ display: 'grid' }}>
                             <Button
@@ -332,7 +307,6 @@ export default function PResult() {
                 </div>
             </div>
 
-            {/* Modal para compartir resultados */}
             <Modal
                 isOpen={showShareModal}
                 onClose={() => setShowShareModal(false)}
@@ -373,19 +347,7 @@ export default function PResult() {
                                 </>
                             }
                         />
-                        <Button
-                            color="azul"
-                            sombra="grande"
-                            tamano="grande"
-                            colorTexto="blanco"
-                            onClick={shareByFacebook}
-                            children={
-                                <>
-                                    <div style={{ fontSize: "24px", marginBottom: "8px" }}>f</div>
-                                    <span>Facebook</span>
-                                </>
-                            }
-                        />
+                        
                     </div>
 
                 }
