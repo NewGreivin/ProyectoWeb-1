@@ -25,7 +25,7 @@ export const APP_LIMITS = {
 };
 
 export const FEATURES = {
-  ENABLE_AUTO_TRANSLATE: false,
+  ENABLE_AUTO_TRANSLATE: true,
 };
 
 export const LANGUAGES = {
