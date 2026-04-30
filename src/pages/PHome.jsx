@@ -3,6 +3,8 @@ import Card from '../Components/Card';
 import Button from '../Components/Buttons';
 import Titulo from '../Components/Titulo';
 import Texto from '../Components/Texto';
+import Navbar from '../Components/Navbar';
+import Imagenes from '../Components/Imagenes';
 
 function PHome() {
     const navigate = useNavigate();
@@ -12,20 +14,36 @@ function PHome() {
     };
 
     return (
-        <div style={{ 
-            display: 'flex', 
-            justifyContent: 'center', 
-            alignItems: 'center', 
-            height: '100vh',
-            width: '100%'
-        }}>
+        <>
+            <Navbar
+                clases='sm'
+                texto='Kahhot'
+                color='#7C3AED'
+                brandContent={
+                    <Imagenes
+                        url="/src/assets/vite.svg"
+                        alt='logo'
+                        ancho={40}
+                        alto={40}
+                        classExtra='me-2'
+                    />
+                }
+            />
+            
             <div style={{ 
                 display: 'flex', 
-                flexDirection: 'column', 
-                gap: '2rem',
-                alignItems: 'center'
+                justifyContent: 'center', 
+                alignItems: 'center', 
+                height: 'calc(100vh - 70px)',
+                width: '100%',
+                paddingTop: '1rem'
             }}>
-                
+                <div style={{ 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    gap: '2rem',
+                    alignItems: 'center'
+                }}>                
                 <Card 
                     color_background='rgba(255, 255, 255, 0.1)'
                     alineado_card="center"
@@ -67,7 +85,8 @@ function PHome() {
                     }
                 />
               </div>
-        </div>
+            </div>
+        </>
     );
 }
 export default PHome;
