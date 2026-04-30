@@ -42,12 +42,12 @@ export default function PResult() {
 }
 
     const generateShareMessage = () => {
-        return `🎮 ¡TRIVIA KAHHOT! 🎮\n\n👤 Jugador: ${playerName}\n\n📊 RESULTADOS:\n✅ Respuestas correctas: ${correctAnswers}/${totalQuestions}\n🎯 Precisión: ${accuracy}%\n⭐ Puntos obtenidos: ${totalPoints}\n📚 Categoría: ${getCategoryLabel(selectedCategory)}\n\n¿Te atreves a superar mi puntuación? 💪\n\n🎮 ¡Juega ahora! 🎮\nhttps://quizly-cr.vercel.app` 
+        return `🎮 ¡TRIVIA QUIZLY! 🎮\n\n👤 Jugador: ${playerName}\n\n📊 RESULTADOS:\n✅ Respuestas correctas: ${correctAnswers}/${totalQuestions}\n🎯 Precisión: ${accuracy}%\n⭐ Puntos obtenidos: ${totalPoints}\n📚 Categoría: ${getCategoryLabel(selectedCategory)}\n\n¿Te atreves a superar mi puntuación? 💪\n\n🎮 ¡Juega ahora! 🎮\nhttps://quizly-cr.vercel.app` 
     }
 
     const shareByEmail = () => {
         const message = generateShareMessage()
-        const subject = `Mi resultado en Kahhot: ${totalPoints} puntos 🎮`
+        const subject = `Mi resultado en Quizly: ${totalPoints} puntos 🎮`
         const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
         window.location.href = mailtoLink
         setShowShareModal(false)
@@ -69,7 +69,7 @@ export default function PResult() {
         <>
             <Navbar
                 clases='sm'
-                texto='Kahhot'
+                texto='Quizly'
                 color='#7C3AED'
                 brandContent={
                     <Imagenes

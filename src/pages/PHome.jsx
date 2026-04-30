@@ -17,7 +17,7 @@ function PHome() {
         <>
             <Navbar
                 clases='sm'
-                texto='Kahhot'
+                texto='Quizly'
                 color='#7C3AED'
                 brandContent={
                     <Imagenes
