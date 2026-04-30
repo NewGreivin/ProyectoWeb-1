@@ -87,8 +87,8 @@ export default function PResult() {
                                     <Texto
                                         texto={motivationalMessage}
                                         alineado='center'
-                                        tamano_letra='18px'
-                                        style={{ color: '#FF6B6B', fontWeight: 'bold', marginBottom: '20px' }}
+                                        tamano_letra='4'
+                                        
                                     />
 
                                     <div style={{
@@ -100,8 +100,8 @@ export default function PResult() {
                                         <Texto
                                             texto='PUNTUACIÓN FINAL'
                                             alineado='center'
-                                            tamano_letra='14px'
-                                            style={{ opacity: 0.7 }}
+                                            tamano_letra='5'
+                                            
                                         />
                                         <div style={{ fontSize: '48px', color: '#FBBF24', fontWeight: 'bold', margin: '10px 0' }}>
                                             {totalPoints}
@@ -109,8 +109,8 @@ export default function PResult() {
                                         <Texto
                                             texto='puntos'
                                             alineado='center'
-                                            tamano_letra='14px'
-                                            style={{ opacity: 0.7 }}
+                                            tamano_letra='5'
+                                           
                                         />
                                     </div>
                                 </>
@@ -134,13 +134,13 @@ export default function PResult() {
                             chil_body={
                                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                                     <div style={{ fontSize: '28px', marginBottom: '6px' }}>✅</div>
-                                    <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '4px' }}>
+                                    <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px' }}>
                                         {correctAnswers}/{totalQuestions}
                                     </div>
                                     <Texto
                                         texto='Correctas'
                                         alineado='center'
-                                        tamano_letra='13px'
+                                        tamano_letra='4'
                                     />
                                 </div>
                             }
@@ -155,13 +155,13 @@ export default function PResult() {
                             chil_body={
                                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                                     <div style={{ fontSize: '28px', marginBottom: '6px' }}>🎯</div>
-                                    <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '4px' }}>
+                                    <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px' }}>
                                         {accuracy}%
                                     </div>
                                     <Texto
                                         texto='Precisión'
                                         alineado='center'
-                                        tamano_letra='13px'
+                                        tamano_letra='4'
                                     />
                                 </div>
                             }
@@ -176,13 +176,13 @@ export default function PResult() {
                             chil_body={
                                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                                     <div style={{ fontSize: '28px', marginBottom: '6px' }}>❓</div>
-                                    <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '4px' }}>
+                                    <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px' }}>
                                         {totalQuestions}
                                     </div>
                                     <Texto
                                         texto='Preguntas'
                                         alineado='center'
-                                        tamano_letra='13px'
+                                        tamano_letra='4'
                                     />
                                 </div>
                             }
@@ -197,13 +197,13 @@ export default function PResult() {
                             chil_body={
                                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                                     <div style={{ fontSize: '28px', marginBottom: '6px' }}>🧠</div>
-                                    <div style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '4px' }}>
+                                    <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px' }}>
                                         {DIFFICULTY_LABELS[difficulty] || difficulty}
                                     </div>
                                     <Texto
                                         texto='Dificultad'
                                         alineado='center'
-                                        tamano_letra='13px'
+                                        tamano_letra='4'
                                     />
                                 </div>
                             }
@@ -218,13 +218,13 @@ export default function PResult() {
                             chil_body={
                                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                                     <div style={{ fontSize: '28px', marginBottom: '6px' }}>📚</div>
-                                    <div style={{ fontSize: '22px', fontWeight: 'bold', marginBottom: '4px' }}>
+                                    <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px' }}>
                                         {getCategoryLabel(selectedCategory)}
                                     </div>
                                     <Texto
                                         texto='Categoría'
                                         alineado='center'
-                                        tamano_letra='13px'
+                                        tamano_letra='4'
                                     />
                                 </div>
                             }
@@ -239,13 +239,13 @@ export default function PResult() {
                             chil_body={
                                 <div style={{ textAlign: 'center', padding: '10px 0' }}>
                                     <div style={{ fontSize: '28px', marginBottom: '6px' }}>❌</div>
-                                    <div style={{ fontSize: '28px', fontWeight: 'bold', marginBottom: '4px' }}>
+                                    <div style={{ fontSize: '30px', fontWeight: 'bold', marginBottom: '4px' }}>
                                         {incorrectCount}
                                     </div>
                                     <Texto
                                         texto='Incorrectas'
                                         alineado='center'
-                                        tamano_letra='13px'
+                                        tamano_letra='4'
                                     />
                                 </div>
                             }
@@ -265,7 +265,7 @@ export default function PResult() {
                                 <>
                                     <div style={{ fontSize: "28px", marginBottom: "10px" }}>🎮</div>
                                     <Titulo
-                                        tipografia='h5'
+                                        tipografia='h4'
                                         alineado='center'
                                         texto='¡Jugar de nuevo!'
                                     />
@@ -285,9 +285,10 @@ export default function PResult() {
                                 <>
                                     <div style={{ fontSize: "28px", marginBottom: "10px" }}>📤</div>
                                     <Titulo
-                                        tipografia='h5'
+                                        tipografia='h4'
                                         alineado='center'
                                         texto='Compartir resultado'
+                                    
                                     />
                                 </>
                                 }
