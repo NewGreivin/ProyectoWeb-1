@@ -7,7 +7,7 @@ import Texto from "../Components/Texto";
 import ProgressBar from "../Components/ProgressBar";
 import Navbar from "../Components/Navbar";
 import Imagenes from "../Components/Imagenes";
-import Modal from "../Components/modal";
+import Alert from "../Components/Alert";
 import Snipper from "../Components/Snipper";
 import { useTriviaQuestions } from "../feature/trivia/triviaHooks";
 
@@ -141,11 +141,11 @@ export default function PQuestions() {
     <div>
       <Navbar
         clases="sm"
-        texto="Kahhot"
+        texto="Quizly"
         color="#7C3AED"
         brandContent={
           <Imagenes
-            url="/src/assets/vite.svg"
+            url="/assets/logo.svg"
             alt="Logo"
             ancho={40}
             alto={40}
@@ -239,20 +239,21 @@ export default function PQuestions() {
         </div>
       </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSave={() => handleExitGame()}
-        titulo="¿Deseas salir de la partida?"
-        colorTextoTitulo="black"
-        btnSecundario="Cancelar"
-        btnPrimario="Salir"
-        propsBtnSecundario={{ color: "gris" }}
-        propsBtnPrimario={{ color: "rojo" }}
-        posicion="centro"
-      >
-        <Texto texto="Perderás todo el progreso" alineado="center" color_text="black" />
-      </Modal>
+      {isModalOpen && (
+        <div className="position-fixed d-flex align-items-center justify-content-center" style={{top: 0, left: 0, width: '100%', height: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: 1000}} onClick={() => setIsModalOpen(false)}>
+          <div className="bg-white rounded p-4" style={{maxWidth: '500px', width: '90%'}} onClick={(e) => e.stopPropagation()}>
+            <Alert
+              titulo="¿Deseas salir de la partida?"
+              texto="Perderás todo el progreso"
+              color="amarillo"
+              acciones={[
+                {label: 'Cancelar', color: 'gris', onClick: () => setIsModalOpen(false)},
+                {label: 'Salir', color: 'rojo', onClick: () => handleExitGame()}
+              ]}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
