@@ -5,9 +5,10 @@ import Card from '../Components/Card'
 import Titulo from '../Components/Titulo'
 import Texto from '../Components/Texto'
 import Modal from '../Components/modal'
+import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { DIFFICULTY_LABELS, TRIVIA_CATEGORIES } from '../constans/config'
-import { useState } from 'react'
+
 
 
 export default function PResult() {
@@ -72,7 +73,7 @@ export default function PResult() {
                 color='#7C3AED'
                 brandContent={
                     <Imagenes
-                        url="/src/assets/vite.svg"
+                        url="/assets/logo.svg"
                         alt='logo'
                         ancho={40}
                         alto={40}
