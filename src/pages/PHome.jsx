@@ -55,7 +55,7 @@ function PHome() {
                             <Titulo
                                 tipografia='h1'
                                 alineado='center'
-                                texto='🕹️ Bienvenido a Tu Kahoot 🕹️'
+                                texto='🕹️ Bienvenido a Tu Quizly 🕹️'
                             />
                             <Texto
                                 texto='La plataforma de Trivia más divertida, con diferentes categorías y niveles de dificultad.'
