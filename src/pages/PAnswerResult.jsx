@@ -43,6 +43,12 @@ export default function PAnswer_Result() {
           score,
           totalQuestions,
           correctAnswers,
+          selectedCategory: category,
+          difficulty,
+          accuracy: Math.round((correctAnswers / totalQuestions) * 100),
+          incorrectCount: totalQuestions - correctAnswers,
+          totalPoints: score,
+          maxPoints: totalQuestions * 100,
         },
       });
     }
