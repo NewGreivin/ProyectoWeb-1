@@ -4,14 +4,17 @@ import Imagenes from '../Components/Imagenes'
 import Card from '../Components/Card'
 import Titulo from '../Components/Titulo'
 import Texto from '../Components/Texto'
+import Modal from '../Components/modal'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { DIFFICULTY_LABELS, TRIVIA_CATEGORIES } from '../constans/config'
+import { useState } from 'react'
 
 
 export default function PResult() {
     const navigate = useNavigate()
     const location = useLocation()
     const playerName = localStorage.getItem('playerName') || 'Jugador'
+    const [showShareModal, setShowShareModal] = useState(false)
     
     // Recibir datos de location.state 
     const {
@@ -42,6 +45,36 @@ export default function PResult() {
     const category = Object.values(TRIVIA_CATEGORIES).find(cat => cat.code === categoryCode)
     return category?.es || selectedCategory || 'Sin categoría'
 }
+
+    // Función para generar el mensaje compartible
+    const generateShareMessage = () => {
+        return `¡Acabo de obtener ${totalPoints} puntos en Kahhot! 🎮\n${playerName} - ${accuracy}% de precisión\n${correctAnswers}/${totalQuestions} respuestas correctas en ${getCategoryLabel(selectedCategory)}`
+    }
+
+    // Función para compartir por correo
+    const shareByEmail = () => {
+        const message = generateShareMessage()
+        const subject = `Mi resultado en Kahhot: ${totalPoints} puntos 🎮`
+        const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`
+        window.location.href = mailtoLink
+        setShowShareModal(false)
+    }
+
+    // Función para compartir por WhatsApp
+    const shareByWhatsApp = () => {
+        const message = generateShareMessage()
+        const whatsappLink = `https://wa.me/?text=${encodeURIComponent(message)}`
+        window.open(whatsappLink, '_blank')
+        setShowShareModal(false)
+    }
+
+    // Función para compartir por Facebook
+    const shareByFacebook = () => {
+        const message = generateShareMessage()
+        const facebookLink = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}&quote=${encodeURIComponent(message)}`
+        window.open(facebookLink, '_blank')
+        setShowShareModal(false)
+    }
 
     // Ancho uniforme para card principal, cuadrícula y botones
     const anchoUniforme = '450px'
@@ -280,7 +313,7 @@ export default function PResult() {
                                 sombra="grande"
                                 tamano="grande"
                                 paddingX="4rem"
-                                onClick={() => navigate('/Name')}
+                                onClick={() => setShowShareModal(true)}
                                 children={
                                 <>
                                     <div style={{ fontSize: "28px", marginBottom: "10px" }}>📤</div>
@@ -298,6 +331,65 @@ export default function PResult() {
 
                 </div>
             </div>
+
+            {/* Modal para compartir resultados */}
+            <Modal
+                isOpen={showShareModal}
+                onClose={() => setShowShareModal(false)}
+                tamano="gigante"
+                posicion="centro"
+                chil_titulo={
+                    <Titulo
+                        tipografia='h5'
+                        alineado='center'
+                        texto='¿Cómo deseas compartir?'
+                        color_text='black'
+                    />
+                }
+                chil_body={
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                        <Button
+                            color="rojo"
+                            sombra="grande"
+                            tamano="grande"
+                            onClick={shareByEmail}
+                            children={
+                                <>
+                                    <div style={{ fontSize: "24px", marginBottom: "8px" }}>📧</div>
+                                    <span>Correo </span>
+                                </>
+                            }
+                        />
+                        <Button
+                            color="verde"
+                            sombra="grande"
+                            tamano="grande"
+                            colorTexto="blanco"
+                            onClick={shareByWhatsApp}
+                            children={
+                                <>
+                                    <div style={{ fontSize: "24px", marginBottom: "8px" }}>💬</div>
+                                    <span>WhatsApp</span>
+                                </>
+                            }
+                        />
+                        <Button
+                            color="azul"
+                            sombra="grande"
+                            tamano="grande"
+                            colorTexto="blanco"
+                            onClick={shareByFacebook}
+                            children={
+                                <>
+                                    <div style={{ fontSize: "24px", marginBottom: "8px" }}>f</div>
+                                    <span>Facebook</span>
+                                </>
+                            }
+                        />
+                    </div>
+
+                }
+            />
         </>
     );
 }
