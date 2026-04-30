@@ -10,7 +10,7 @@ export default function Select({
             value={value}
             onChange={onChange}
         >
-            <option value="">{texto}</option>
+            <option value="" disabled>{texto}</option>
 
             {options.map((option, index) => (
                 <option key={index} value={option.value}>
