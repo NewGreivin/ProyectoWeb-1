@@ -54,8 +54,9 @@ export default function PName() {
                             <input
                                 type="text"
                                 className="form-control mt-3"
-                                placeholder="Eje: Roberto"
+                                placeholder="Eje: Juan"
                                 value={nombre}
+                                required
                                 onChange={(e) => setNombre(e.target.value)}
                             />
 
@@ -79,6 +80,7 @@ export default function PName() {
                                 posicion="izquierda"
                                 sombra='grande'
                                 onClick={() => {
+                                    if (!nombre.trim()) return
                                     localStorage.setItem('playerName', nombre)
                                     navigate('/config')
                                 }}
