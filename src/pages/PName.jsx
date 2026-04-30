@@ -16,11 +16,11 @@ export default function PName() {
         <>
             <Navbar
                 clases='sm'
-                texto='Kahhot'
+                texto='Quizly'
                 color='#7C3AED'
                 brandContent={
                     <Imagenes
-                        url="/src/assets/vite.svg"
+                        url="/src/assets/logo.svg"
                         alt='logo'
                         ancho={40}
                         alto={40}

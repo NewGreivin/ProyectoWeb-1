@@ -29,11 +29,11 @@ export default function PConfig() {
     <>
         <Navbar
             clases='sm'
-            texto='Kahhot-Configuración'
+            texto='Quizly-Configuración'
             color='#7C3AED'
             brandContent={
                 <Imagenes
-                    url="/src/assets/vite.svg"
+                    url="/src/assets/logo.svg"
                     alt='logo'
                     ancho={40}
                     alto={40}
@@ -92,6 +92,7 @@ export default function PConfig() {
                                         text: category.es
                                     }))}
                                     value={category}
+                                    required
                                     onChange={(e) =>
                                         setCategory(e.target.value)
                                     }
@@ -107,6 +108,7 @@ export default function PConfig() {
                                         text: `${DIFFICULTY_LABELS[value]} (${DIFFICULTY_TIMES[value]}s)`
                                     }))}
                                     value={difficulty}
+                                    required
                                     onChange={(e) => {
                                         setDifficulty(e.target.value);
                                     }}
@@ -123,6 +125,8 @@ export default function PConfig() {
                                     sombra='grande'
                                     tamano='grande'
                                     onClick={() => {
+                                        if(!category || !difficulty) return
+
                                         const settings = {
                                             category: category,
                                             difficulty: difficulty,
