@@ -20,7 +20,7 @@ export default function PName() {
                 color='#7C3AED'
                 brandContent={
                     <Imagenes
-                        url="/src/assets/logo.svg"
+                        url="/assets/logo.svg"
                         alt='logo'
                         ancho={40}
                         alto={40}

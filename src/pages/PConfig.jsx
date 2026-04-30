@@ -21,7 +21,7 @@ export default function PConfig() {
     const navigate = useNavigate();
 
     const [category, setCategory] = useState('');
-    const [difficulty, setDifficulty] = useState('medium');
+    const [difficulty, setDifficulty] = useState('');
 
     const Nombre = localStorage.getItem('playerName');
 
@@ -29,11 +29,11 @@ export default function PConfig() {
     <>
         <Navbar
             clases='sm'
-            texto='Quizly-Configuración'
+            texto='Quizly'
             color='#7C3AED'
             brandContent={
                 <Imagenes
-                    url="/src/assets/logo.svg"
+                    url="/assets/logo.svg"
                     alt='logo'
                     ancho={40}
                     alto={40}
