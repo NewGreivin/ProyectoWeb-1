@@ -7,7 +7,8 @@ export default function Alert({
   texto,
   color,
   dismissible = false,
-  onDismiss
+  onDismiss,
+  acciones = []
 }) {
 
   const alertColor = {
@@ -22,15 +23,27 @@ export default function Alert({
   }[color] || "azul";
 
   return (
-    <div
-      className={`alert ${alertColor} ${dismissible ? "alert-dismissible fade show" : ""}`}
-      role="alert"
-    >
-      {titulo && <Titulo texto={titulo} />}
-      {texto && <Texto texto={texto} />}
+    <div className={`alert ${alertColor} ${dismissible ? "alert-dismissible fade show" : ""}`} role="alert">
+      {titulo && <Titulo texto={titulo} color_text="black"/>}
+      {texto && <Texto texto={texto} color_text="black"/>}
 
       {dismissible && (
         <Button texto="×" color={color} tamano="pequeño" onClick={onDismiss} />
+      )}
+
+      {acciones && acciones.length > 0 && (
+        <div className="row g-2 mt-3">
+          {acciones.map((accion, index) => (
+            <div key={index} className="col-md-6">
+              <Button
+                color={accion.color || 'gris'}
+                tamano="grande"
+                onClick={accion.onClick}
+                children={accion.label}
+              />
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );
