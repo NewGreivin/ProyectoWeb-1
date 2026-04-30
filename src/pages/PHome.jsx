@@ -12,54 +12,61 @@ function PHome() {
     };
 
     return (
-        <div className="container mt-5">
-            <div className="row g-5">
-                <div className="col-12 d-flex justify-content-center">
-                    <Card 
-                        color_background='rgba(255, 255, 255, 0.1)'
-                        alineado_card="center"
-                        color_texto="white"
-                        card_width="25rem"
-                        texto_alineado="center"
-                        chil_body={
-                            <>
-                                <Titulo
-                                    tipografia='h3'
-                                    alineado='center'
-                                    texto='🕹️ Bienvenido a Tu Kahoot '
-                                />
-                                <Texto
-                                    texto='La plataforma de Trivia más divertida, con diferentes categorías y niveles de dificultad.'
-                                    alineado='center'
-                                    tamano_letra='16px'
-                                />
-                            </>
-                        }
-                    />
-                </div>
-                <div className="col-12 d-flex justify-content-center">
-                    <div style={{ width: "25rem", display: "flex", justifyContent: "center" }}>
-                        <Button
-                            color="rojo"
-                            sombra="grande"
-                            paddingY="2rem"
-                            paddingX="7rem"
-                            posicion="centro"
-                            onClick={handleConfigClick}
-                            children={
-                                <>
-                                    <div style={{ fontSize: "48px", marginBottom: "20px" }}>🎮</div>
-                                    <Titulo
-                                        tipografia='h4'
-                                        alineado='center'
-                                        texto='¡Vamos a jugar!'
-                                    />
-                                </>
-                            }
-                        />
-                    </div>
-                </div>
-            </div>
+        <div style={{ 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '100vh',
+            width: '100%'
+        }}>
+            <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '2rem',
+                alignItems: 'center'
+            }}>
+                
+                <Card 
+                    color_background='rgba(255, 255, 255, 0.1)'
+                    alineado_card="center"
+                    color_texto="white"
+                    card_width="42.5rem"
+                    texto_alineado="center"
+                    chil_body={
+                        <>
+                            <Titulo
+                                tipografia='h1'
+                                alineado='center'
+                                texto='🕹️ Bienvenido a Tu Kahoot 🕹️'
+                            />
+                            <Texto
+                                texto='La plataforma de Trivia más divertida, con diferentes categorías y niveles de dificultad.'
+                                alineado='center'
+                                tamano_letra='3'
+                            />
+                        </>
+                    }
+                />
+
+                <Button
+                    color="rojo"
+                    sombra="grande"
+                    paddingY="2rem"
+                    paddingX="15rem"
+                    posicion="centro"
+                    onClick={handleConfigClick}
+                    children={
+                        <>
+                            <div style={{ fontSize: "66px", marginBottom: "18px" }}>🎮</div>
+                            <Titulo
+                                tipografia='h2'
+                                alineado='center'
+                                texto='¡Jugar ahora!'
+                            />
+                        </>
+                    }
+                />
+              </div>
         </div>
     );
 }
