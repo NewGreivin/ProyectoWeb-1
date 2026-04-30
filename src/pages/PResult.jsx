@@ -42,7 +42,7 @@ export default function PResult() {
 }
 
     const generateShareMessage = () => {
-        return `🎮 ¡TRIVIA QUIZLY! 🎮\n\n👤 Jugador: ${playerName}\n\n📊 RESULTADOS:\n✅ Respuestas correctas: ${correctAnswers}/${totalQuestions}\n🎯 Precisión: ${accuracy}%\n⭐ Puntos obtenidos: ${totalPoints}\n📚 Categoría: ${getCategoryLabel(selectedCategory)}\n\n¿Te atreves a superar mi puntuación? 💪\n\n🎮 ¡Juega ahora! 🎮\nhttps://quizly-cr.vercel.app` 
+        return `TRIVIA QUIZLY\n\nJugador: ${playerName}\n\nRESULTADOS:\nRespuestas correctas: ${correctAnswers}/${totalQuestions}\nPrecisión: ${accuracy}%\nPuntos obtenidos: ${totalPoints}\nCategoría: ${getCategoryLabel(selectedCategory)}\n\n¿Te atreves a superar mi puntuación?\n\nJuega ahora: https://quizly-cr.vercel.app` 
     }
 
     const shareByEmail = () => {
